@@ -1,0 +1,21 @@
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+ function initialize() {
+     var mapProp = {
+         center: new google.maps.LatLng(54.350000, 18.633300),
+         zoom: 10,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);  
+     <%= for item <- @items do %>
+     var marker = new google.maps.Marker({
+         position: { lat: <%= Enum.at(item, 2) %>, lng: <%= Enum.at(item, 3) %> },
+         map: map,
+         title: '<%= Enum.at(item, 1) %>'
+     });
+     <% end %>
+ }
+ google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div id="googleMap" style="width: 700px; height: 400px;"></div>
