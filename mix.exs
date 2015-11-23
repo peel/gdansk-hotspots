@@ -19,7 +19,7 @@ defmodule GdnWifi.Mixfile do
   def application do
     [mod: {GdnWifi, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :httpoison]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule GdnWifi.Mixfile do
      {:cowboy, "~> 1.0"},
      {:csv, "~> 1.2.0"},
      {:httpoison, "~> 0.8.0"},
-     {:codepagex, "~> 0.1.0"}
+     {:codepagex, "~> 0.1.0"},
+     {:credo, "~> 0.1.9", only: [:dev, :test]}
     ]
   end
 
